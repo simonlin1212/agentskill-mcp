@@ -10,7 +10,9 @@
   "files": [
     "dist",
     "README.md",
-    "LICENSE"
+    "README_zh.md",
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "engines": {
     "node": ">=18"
