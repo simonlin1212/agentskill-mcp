@@ -1,6 +1,7 @@
 {
   "name": "@simonlin1212/agentskill-mcp",
   "version": "0.1.0",
+  "mcpName": "nz.agentskill/mcp",
   "description": "MCP server for agentskill.nz — let your agent discover, inspect and install curated AI agent capabilities",
   "type": "module",
   "bin": {
@@ -38,5 +39,13 @@
   "devDependencies": {
     "typescript": "^5.9.0",
     "@types/node": "^24.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonlin1212/agentskill-mcp.git"
+  },
+  "homepage": "https://agentskill.nz",
+  "bugs": {
+    "url": "https://github.com/simonlin1212/agentskill-mcp/issues"
   }
 }
