@@ -1,0 +1,37 @@
+{
+  "name": "@simonlin1212/agentskill-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for agentskill.nz — let your agent discover, inspect and install curated AI agent capabilities",
+  "type": "module",
+  "bin": {
+    "agentskill-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "agent",
+    "skills",
+    "claude",
+    "agentskill"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "@types/node": "^26.2.0",
+    "typescript": "^7.0.2",
+    "zod": "^4.4.3"
+  }
+}
