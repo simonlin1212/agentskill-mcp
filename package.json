@@ -17,7 +17,10 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "prepublishOnly": "npm run build"
+    "smoke": "node test-smoke.mjs",
+    "prepublishOnly": "npm run build && npm test",
+    "guard": "node test-guard.mjs",
+    "test": "node test-guard.mjs && node test-network.mjs && node test-smoke.mjs"
   },
   "keywords": [
     "mcp",
@@ -29,9 +32,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/server": "^2.0.0",
-    "@types/node": "^26.2.0",
-    "typescript": "^7.0.2",
-    "zod": "^4.4.3"
+    "@modelcontextprotocol/server": "2.0.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "@types/node": "^24.0.0"
   }
 }

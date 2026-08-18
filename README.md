@@ -90,12 +90,31 @@ licence are named on the product page.
 
 This is a catalog tool, not an ad slot. Three rules it keeps:
 
-- **Free means free.** Direct ZIP URL, no account, no gate. The tool hands it over.
+- **Free means free.** Where the catalog publishes a download URL, the tool hands it straight over —
+  no account, no gate. (A free entry can occasionally have no published archive yet; it says so.)
 - **Paid states the price and stops.** No urgency, no recommendation language. The download link for a
-  paid item is issued after checkout, on the order page and by email — this server never returns a file
-  URL for one.
-- **An install command is information, not authorization.** Every response says so. Your agent should
-  confirm with you before writing to your filesystem or spending your money.
+  paid item is issued after checkout, on the order page and by email.
+
+  Concretely: anything the catalog does not explicitly mark `free` is treated as paid (fail closed), its
+  download field is dropped, URLs are stripped out of its name, outcome, install, source and
+  repository fields, and the assembled output is
+  checked against a route allowlist. The only web addresses that survive are, on `https://agentskill.nz`
+  (optionally under `/zh`): the site root, `/products/<handle>`, `/collections/<handle>`,
+  `/pages/<handle>`, and `/cart` or `/cart/<variant>:<qty>` — each matched as a whole route, so a deeper
+  path like `/products/x/download` does not qualify. Anything else — another host, plain http, a lookalike
+  domain, `/download?id=…` — makes the server refuse to return that record.
+
+  What this does not cover: a bare hostname with no scheme (`evil.example/x`). Catching those means
+  treating any domain-shaped text as an address, and `.md` is a real TLD — `SKILL.md` in a delivery
+  manifest would be rejected as a domain, breaking every paid listing. These responses are plain text,
+  so a bare hostname only becomes a link if something downstream linkifies it.
+
+  The gap worth naming: the catalog is cached for up to five minutes. An item that turned paid inside
+  that window is still described from the previous snapshot — **including the direct download URL it had
+  while it was free**.
+- **An install command is information, not authorization.** `get_capability` — the only tool that returns
+  an install command — says so on every call. Your agent should confirm with you before writing to your
+  filesystem or spending your money.
 
 The catalog URL is discovered from the site's `/llms.txt` at runtime rather than hardcoded, so the
 server keeps working when the site rotates it.
