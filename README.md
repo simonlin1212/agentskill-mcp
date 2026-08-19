@@ -49,7 +49,7 @@ No install step. Point your MCP client at it:
   "mcpServers": {
     "agentskill": {
       "command": "npx",
-      "args": ["-y", "@simonlin1212/agentskill-mcp"]
+      "args": ["-y", "github:simonlin1212/agentskill-mcp"]
     }
   }
 }
@@ -58,8 +58,11 @@ No install step. Point your MCP client at it:
 Claude Code:
 
 ```bash
-claude mcp add agentskill -- npx -y @simonlin1212/agentskill-mcp
+claude mcp add agentskill -- npx -y github:simonlin1212/agentskill-mcp
 ```
+
+It builds on first install, so the first run takes a few seconds longer than later ones.
+(An npm release is not out yet; installing from the repository is the supported route today.)
 
 Requires Node 18+. Nothing to configure, no API key, no account. The server holds no state and writes
 nothing to your machine.

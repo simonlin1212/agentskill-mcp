@@ -47,7 +47,7 @@ agent 碰到一件它干不了的事——取 A 股行情、让另一个模型�
   "mcpServers": {
     "agentskill": {
       "command": "npx",
-      "args": ["-y", "@simonlin1212/agentskill-mcp"]
+      "args": ["-y", "github:simonlin1212/agentskill-mcp"]
     }
   }
 }
@@ -56,8 +56,11 @@ agent 碰到一件它干不了的事——取 A 股行情、让另一个模型�
 Claude Code：
 
 ```bash
-claude mcp add agentskill -- npx -y @simonlin1212/agentskill-mcp
+claude mcp add agentskill -- npx -y github:simonlin1212/agentskill-mcp
 ```
+
+首次安装时会现场构建一次，所以第一次启动比之后慢几秒。
+（npm 包尚未发布，目前从仓库安装是受支持的方式。）
 
 需要 Node 18+。无需配置、无需 API key、无需注册。服务本身不保存状态，也不往你机器上写任何东西。
 
