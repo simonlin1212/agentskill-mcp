@@ -23,7 +23,8 @@
     "smoke": "node test-smoke.mjs",
     "prepublishOnly": "npm run build && npm test",
     "guard": "node test-guard.mjs",
-    "test": "node test-guard.mjs && node test-network.mjs && node test-smoke.mjs"
+    "test": "node test-guard.mjs && node test-network.mjs && node test-smoke.mjs",
+    "prepare": "npm run build"
   },
   "keywords": [
     "mcp",
