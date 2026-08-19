@@ -79,13 +79,32 @@ try {
   }
   console.log("✅ 中英文查询命中（A股 / 去水印 / remove watermark）");
 
-  // 🔴 每个合法的 module 取值都必须真能筛出东西 —— 上一版有一半静默返回空
+  // 🔴 每个合法的 module 取值都必须筛出**与目录一致的条数**。
+  //    ⚠️ 不能断言"必须非空"：模块可以合法地空着（2026-08-18 电商那条能力撤下后就空了，
+  //       这个断言当场把发布拦下来 —— 拦得对，但拦错了原因）。
+  //    改成比对条数后，别名映射一断（比如 Commerce 对不上 ecommerce）数量立刻对不上，
+  //    而空模块只是期望值为 0，不再误报。
+  const ENUM_TO_HANDLE = {
+    finance: "finance", Finance: "finance",
+    ecommerce: "ecommerce", Commerce: "ecommerce",
+    media: "media", Creator: "media",
+    general: "general", General: "general",
+  };
+  const modsText = await call("list_modules", {});
+  const want = {};
+  for (const m of modsText.matchAll(/\[([a-z]+)\]\s*—\s*(\d+)/g)) want[m[1]] = Number(m[2]);
+
   const modules = tools.find((t) => t.name === "search_capabilities").inputSchema.properties.module.enum;
   for (const m of modules) {
+    const handle = ENUM_TO_HANDLE[m];
+    if (!handle) fail(`enum 值 ${m} 没有对应的 handle —— 测试与实现的映射表脱节了`);
+    const expected = want[handle] ?? 0;          // 目录里不出现 = 该模块 0 条
     const out = await call("search_capabilities", { module: m, limit: 50 });
-    if (/^No capability matched/.test(out)) fail(`module="${m}" 返回空 —— 别名映射又断了`);
+    const got = /^No capability matched/.test(out) ? 0 : Number((out.match(/of (\d+) match/) || [])[1] ?? -1);
+    if (got !== expected) fail(`module="${m}" 期望 ${expected} 条、实得 ${got} 条 —— 别名映射断了`);
   }
-  console.log(`✅ ${modules.length} 个 module 取值全部筛得到结果`);
+  const nonEmpty = Object.values(want).filter((n) => n > 0).length;
+  console.log(`✅ ${modules.length} 个 module 取值条数全部与目录一致（${nonEmpty} 个模块有货）`);
 
   // 🔴 硬规则：遍历**所有**付费能力，过**每一个**输出路径
   const all = await call("search_capabilities", { tier: "paid", limit: 50 });
