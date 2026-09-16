@@ -25,15 +25,6 @@
 
 ---
 
-## Open to AI Roles in Shenzhen
-
-The author is open to AI roles in Shenzhen, particularly in **AI-powered investment research products, Forward Deployed Engineering (FDE), and AI consulting or solutions** at Tencent, other leading technology companies, and financial institutions.
-
-He combines experience in financial institutions with hands-on AI product development, building open-source market data tools and multi-agent systems with **17K+ GitHub stars**.
-
-Contact: [simonlin0423@gmail.com](mailto:simonlin0423@gmail.com)
-
----
 
 ## What it does
 
@@ -153,14 +144,6 @@ See [CHANGELOG.md](CHANGELOG.md).
 This server reads a catalog and returns what it says. It does not evaluate whether a capability suits
 your use case, and it does not execute anything. Skill files are code your agent will read and act on —
 review them before use, the same as any dependency.
-
-## Support
-
-If this saved you some time ☕
-
-<p align="center">
-  <a href="https://buymeacoffee.com/simonlin1212"><img src="./assets/bmc-qr.png" width="180" alt="Buy Me a Coffee"></a>
-</p>
 
 ## License
 

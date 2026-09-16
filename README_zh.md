@@ -25,15 +25,6 @@
 
 ---
 
-## 寻找深圳的 AI 工作机会
-
-作者目前正在寻找深圳的 AI 相关工作机会，重点关注腾讯等大型科技企业及金融机构的 **AI 投研产品、FDE 与 AI 咨询 / 解决方案岗位**。
-
-兼具金融机构从业经历与 AI 产品实战，持续构建金融市场数据工具和多智能体系统，开源项目累计获得 **17K+ GitHub Stars**。
-
-联系：[simonlin0423@gmail.com](mailto:simonlin0423@gmail.com)
-
----
 
 ## 它做什么
 
@@ -140,14 +131,6 @@ node test-smoke.mjs    # 用真实 MCP stdio 协议打一遍服务器
 
 这个服务只是读取目录并如实返回，它不判断某个能力是否适合你的场景，也不执行任何东西。
 skill 文件是你的 agent 会读取并据以行动的代码，**使用前请像对待任何依赖一样先看一遍**。
-
-## 赞赏
-
-如果它帮你省了点时间 ☕
-
-<p align="center">
-  <a href="https://buymeacoffee.com/simonlin1212"><img src="./assets/bmc-qr.png" width="180" alt="Buy Me a Coffee"></a>
-</p>
 
 ## License
 
