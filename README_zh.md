@@ -14,6 +14,15 @@
   <img src="https://img.shields.io/github/stars/simonlin1212/agentskill-mcp?style=flat" alt="stars">
 </p>
 
+---
+
+**作者求职｜深圳 · 香港 · 远程**
+
+我是 Simon，专注于 AI Agent 与实用工具开发，正在寻找深圳、香港或远程工作机会。  
+欢迎联系：[simonlin0423@gmail.com](mailto:simonlin0423@gmail.com)。
+
+---
+
 <p align="center">
   <a href="#它做什么">它做什么</a> ·
   <a href="#安装">安装</a> ·
